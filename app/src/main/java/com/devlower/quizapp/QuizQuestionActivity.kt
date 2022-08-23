@@ -27,6 +27,7 @@ class QuizQuestionActivity : AppCompatActivity() {
         tvProgress = findViewById(R.id.tv_progress)
         tvQuestion = findViewById(R.id.tv_question)
         ivImage = findViewById(R.id.iv_image)
+
         tvOptionOne = findViewById(R.id.tv_option_one)
         tvOptionTwo = findViewById(R.id.tv_option_two)
         tvOptionThree = findViewById(R.id.tv_option_three)
@@ -38,5 +39,17 @@ class QuizQuestionActivity : AppCompatActivity() {
         for(i in questionList) {
             Log.i("Questions ID is", i.id.toString())
         }
+
+        val currentPosition = 1
+        val question: Question = questionList[currentPosition - 1]
+        ivImage?.setImageResource(question.image)
+        progressBar?.progress = currentPosition
+        tvProgress?.text = "$currentPosition/${progressBar?.max}"
+        tvQuestion?.text = question.question
+        tvOptionOne?.text = question.optionOne
+        tvOptionTwo?.text = question.optionTwo
+        tvOptionThree?.text = question.optionThree
+        tvOptionFour?.text = question.optionFour
+
     }
 }
